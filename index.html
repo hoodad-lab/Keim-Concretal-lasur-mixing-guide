@@ -6,35 +6,43 @@
     <title>KEIM Concretal-Lasur Mixing Guide</title>
     <!-- 1. Load Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* 2. Use a clean, readable font */
         body {
             font-family: 'Inter', sans-serif;
         }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        /* Custom styles for calculator tabs */
+        .tab-btn {
+            @apply px-4 py-2 font-medium text-lg rounded-t-lg transition-colors duration-200;
+        }
+        .tab-btn.active {
+            @apply bg-white text-teal-700;
+        }
+        .tab-btn.inactive {
+            @apply bg-teal-600 text-teal-100 hover:bg-teal-500;
+        }
+        .tab-content {
+            @apply p-6 bg-white rounded-b-lg rounded-tr-lg shadow-lg;
+        }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-stone-100">
 
-    <!-- Main content container -->
+    <!-- 3. Main content container -->
     <div class="container mx-auto max-w-3xl p-4 sm:p-8">
+        
+        <!-- Header -->
+        <header class="text-center mb-8 pt-4">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center">A Painter's Handy Guide to Mixing KEIM Concretal-Lasur</h1>
+            <p class="text-xl text-stone-600 mt-2">KEIM Concretal-Lasur</p>
+        </header>
+
         <div class="bg-white p-6 sm:p-10 rounded-2xl shadow-xl">
 
-            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center">A Painter's Handy Guide to Mixing KEIM Concretal-Lasur</h1>
-
             <!-- Section: The 2 Key Components -->
-            <div class="mt-8">
+            <div class="mt-2">
                 <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2">The 2 Key Components</h2>
                 <p class="mt-4 text-lg text-gray-700">First, let's get our heads around the products you'll be working with:</p>
                 <ul class="list-decimal list-outside ml-6 mt-4 space-y-2 text-gray-700">
@@ -42,7 +50,7 @@
                         <strong class="font-semibold text-gray-800">KEIM Concretal-Lasur (The "Pigment"):</strong> This is the <strong>colour</strong> part of the mix. You can also use it on its own for a solid (opaque) finish.
                     </li>
                     <li class="pl-2">
-                        <strong class="font-semibold text-gray-800">KEIM Concretal-Fixativ (The "Dilution"):</strong> This is the <strong>clear fixer</strong>. You mix this with the colour to make it more transparent (like a stain).
+                        <strong class="font-semibold text-gray-800">KEIM Concretal-Fixativ (The "Diluent"):</strong> This is the <strong>clear fixer</strong>. You mix this with the colour to make it more transparent (like a stain).
                     </li>
                 </ul>
             </div>
@@ -50,123 +58,119 @@
             <!-- Section: The Golden Rule -->
             <div class="mt-8">
                 <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2">The Golden Rule</h2>
-                <p class="mt-4 text-lg text-gray-700">You can mix the <strong>Pigment (colour)</strong> and the <strong>Dilution (clear fixer)</strong> in <strong>ANY RATIO</strong> you want. This is not like a 2-part epoxy; there is no "correct" chemical mix. The ratio you choose is an artistic choice to get the transparency you want.</p>
+                <p class="mt-4 text-lg text-gray-700">You can mix the <strong>Pigment (colour)</strong> and the <strong>Diluent (clear fixer)</strong> in <strong>ANY RATIO</strong> you want. This is not like a 2-part epoxy; there is no "correct" chemical mix. The ratio you choose is an artistic choice to get the transparency you want.</p>
             </div>
 
             <!-- Section: WARNING -->
             <div class="mt-8 bg-amber-50 border-l-4 border-amber-500 text-amber-900 p-5 rounded-r-lg shadow">
                 <h3 class="font-bold text-lg">IMPORTANT WARNING: THE TEST PATCH IS ESSENTIAL!</h3>
                 <p class="mt-2">Concrete walls and ceilings naturally vary in colour and texture. A key reason to use Lasur is to even out these differences.</p>
-                <p class="mt-3">Your test patch is where you perfect your mix. Apply a small amount in an inconspicuous area and let it dry completely. You will likely need to <strong>adjust your ratio</strong> (add more Pigment or Dilution) and re-test to achieve your desired finish.</p>
+                <p class="mt-3">Your test patch is where you perfect your mix. Apply a small amount in an inconspicuous area and let it dry completely. You will likely need to <strong>adjust your ratio</strong> (add more Pigment or Diluent) and re-test to achieve your desired finish.</p>
                 <p class="mt-3">The final look is heavily influenced by the concrete's <strong>porosity</strong>, its <strong>existing base colour</strong>, and its <strong>exposure to light</strong>. What works on one wall may look slightly different on another.</p>
             </div>
 
+            <!-- NEW SECTION: COVERAGE CALCULATOR -->
+            <section id="coverage-calculator" class="mt-10 bg-stone-200 p-6 rounded-2xl shadow-inner border border-stone-300">
+                <h2 class="text-2xl font-bold text-stone-800 text-center mb-4">Step 1: How Much Paint Do I Need?</h2>
+                <p class="text-center text-stone-600 mb-6">Calculate the total mixed volume required for a standard <strong>2-coat application</strong>.</p>
+                
+                <div class="max-w-lg mx-auto">
+                    <label for="areaInput" class="block text-lg font-semibold text-stone-700 mb-2">Total Wall Area (m²):</label>
+                    <input type="number" id="areaInput" class="w-full p-3 text-lg rounded-lg border border-gray-400 text-stone-900 mb-2 focus:ring-2 focus:ring-teal-600 focus:outline-none" placeholder="e.g., 50">
+                    
+                    <p class="text-sm text-stone-500 italic mb-4">Based on approx. 0.25 Litres/m² for 2 coats on smooth concrete.</p>
+            
+                    <div class="bg-white p-4 rounded-lg border border-stone-300 text-center shadow-sm">
+                        <p class="text-lg font-medium text-stone-600">Total Mixed Paint Needed:</p>
+                        <p class="text-3xl font-bold text-teal-700 mt-2"><span id="coverageResult">0.00</span> Litres</p>
+                    </div>
+            
+                    <button id="transferBtn" class="w-full bg-stone-700 text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-stone-800 transition-all duration-200 mt-6 flex justify-center items-center gap-2">
+                        <span>Use This Volume Below</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
             <!-- Section: Simple Mix Calculator -->
-            <div id="calculator-section" class="mt-8 bg-stone-50 border-2 border-stone-200 p-5 sm:p-8 rounded-2xl shadow-lg">
-                <h2 class="text-2xl font-bold text-gray-800 text-center">Simple Mix Calculator</h2>
-                <p class="text-center text-gray-600 mt-2">Too easy!</p>
+            <section id="mix-calculator" class="mt-10 bg-teal-700 p-6 sm:p-8 rounded-2xl shadow-2xl">
+                <h2 class="text-center text-3xl font-bold text-white mb-2">Step 2: Simple Mix Calculator</h2>
+                <p class="text-center text-teal-100 mb-6">Now split that total volume into Pigment & Fixativ.</p>
 
                 <!-- 1. Total Volume Input -->
-                <div class="mt-6">
-                    <label for="totalVolume" class="block text-lg font-semibold text-gray-700">1. Total Volume You Need (in ml):</label>
-                    <input type="number" id="totalVolume" value="1000" class="w-full p-3 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-teal-500 focus:outline-none" placeholder="e.g., 1000" min="0">
+                <div class="mb-6">
+                    <div class="flex justify-between items-end mb-2">
+                        <label for="totalVolume" class="block text-lg font-medium text-teal-50">1. Total Mixed Volume You Need:</label>
+                        
+                        <!-- Unit Dropdown -->
+                        <select id="unitSelect" class="bg-teal-800 text-white font-medium rounded-lg px-3 py-2 border border-teal-600 focus:outline-none focus:ring-2 focus:ring-white cursor-pointer">
+                            <option value="L" selected>Litres (L)</option>
+                            <option value="ml">Millilitres (ml)</option>
+                        </select>
+                    </div>
+                    
+                    <p class="text-sm text-teal-200 mb-2" id="volumeHint">Example: 1.0 for 1 Litre</p>
+                    <input type="number" id="totalVolume" value="1" class="w-full p-3 text-lg rounded-lg shadow-inner border border-gray-300 text-stone-800 focus:ring-2 focus:ring-white focus:outline-none" placeholder="e.g., 1.0">
                 </div>
 
                 <!-- 2. Tab buttons for mode -->
                 <div class="mt-6">
-                    <label class="block text-lg font-semibold text-gray-700">2. How do you want to mix it?</label>
-                    <div class="flex mt-2 rounded-lg shadow" role="group">
-                        <button id="tabRatio" type="button" class="flex-1 py-3 px-4 text-lg font-medium text-white bg-teal-600 border border-teal-600 rounded-l-lg hover:bg-teal-700 focus:z-10 focus:ring-2 focus:ring-teal-500">
+                    <label class="block text-lg font-semibold text-teal-50 mb-2">2. How do you want to mix it?</label>
+                    <div class="flex mt-2" role="group">
+                        <button id="tabRatioBtn" class="tab-btn active flex-1">
                             By Ratio
                         </button>
-                        <button id="tabPercent" type="button" class="flex-1 py-3 px-4 text-lg font-medium text-teal-600 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-teal-700 focus:z-10 focus:ring-2 focus:ring-teal-500">
+                        <button id="tabPercentBtn" class="tab-btn inactive flex-1">
                             By Percentage
                         </button>
                     </div>
                 </div>
 
                 <!-- 3. Calculator Inputs -->
-                <div id="calculatorInputs" class="mt-6">
+                <div id="calculatorInputs" class="bg-white rounded-b-lg rounded-tr-lg p-6 shadow-lg">
                     <!-- Ratio Inputs (Visible by default) -->
-                    <div id="ratioSection">
-                        <label for="ratioPigment" class="block text-lg font-semibold text-gray-700">3. Enter Your Ratio (Pigment : Dilution)</label>
+                    <div id="tabRatio" class="tab-content-inner">
+                        <label for="ratioPigment" class="block text-lg font-semibold text-gray-700">3. Enter Your Ratio (Pigment : Diluent)</label>
                         <div class="flex items-center space-x-2 mt-2">
-                            <input type="number" id="ratioPigment" value="1" class="w-full p-3 border border-gray-300 rounded-lg text-lg text-center focus:ring-2 focus:ring-teal-500 focus:outline-none" placeholder="1" min="0">
+                            <input type="number" id="ratioPigment" value="1" class="w-full p-3 border border-gray-300 rounded-lg text-lg text-center focus:ring-2 focus:ring-teal-500 focus:outline-none" placeholder="1">
                             <span class="text-2xl font-bold text-gray-500">:</span>
-                            <input type="number" id="ratioDilution" value="1" class="w-full p-3 border border-gray-300 rounded-lg text-lg text-center focus:ring-2 focus:ring-teal-500 focus:outline-none" placeholder="1" min="0">
+                            <input type="number" id="ratioDiluent" value="1" class="w-full p-3 border border-gray-300 rounded-lg text-lg text-center focus:ring-2 focus:ring-teal-500 focus:outline-none" placeholder="1">
                         </div>
                     </div>
                     <!-- Percent Inputs (Hidden by default) -->
-                    <div id="percentSection" class="hidden">
+                    <div id="tabPercent" class="tab-content-inner hidden">
                         <label for="percentPigment" class="block text-lg font-semibold text-gray-700">3. Enter Your Pigment Percentage (%)</label>
                         <p class="text-sm text-gray-500 mb-2">e.g., 100% = Opaque, 20% = Transparent</p>
                         <div class="flex items-center space-x-2 mt-2">
-                            <input type="number" id="percentPigment" value="50" class="w-full p-3 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-teal-500 focus:outline-none" placeholder="50" min="0">
+                            <input type="number" id="percentPigment" value="50" class="w-full p-3 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-teal-500 focus:outline-none" placeholder="50">
                             <span class="text-2xl font-bold text-gray-500">%</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- 4. Calculate Button -->
-                <button id="calculateBtn" class="w-full bg-teal-600 text-white text-xl font-bold p-4 rounded-lg mt-8 hover:bg-teal-700 shadow-md transition-all duration-150">
+                <button id="calculateBtn" class="w-full bg-teal-900 text-white text-xl font-bold p-4 rounded-lg mt-8 hover:bg-teal-800 shadow-md transition-all duration-150 border border-teal-500">
                     Calculate Mix
                 </button>
 
                 <!-- 5. Results Section -->
-                <div id="results" class="mt-6 bg-stone-100 p-6 rounded-lg shadow-inner border border-stone-200">
-                    <h3 class="text-lg font-semibold text-gray-800">You will need:</h3>
-                    <p id="pigmentResult" class="text-2xl font-bold text-teal-700 mt-2">Pigment (Colour): 0 ml</p>
-                    <p id="dilutionResult" class="text-2xl font-bold text-stone-800 mt-1">Dilution (Fixer): 0 ml</p>
+                <div id="results" class="mt-6 bg-stone-800 p-6 rounded-lg shadow-inner border border-stone-600 text-center">
+                    <h3 class="text-lg font-semibold text-stone-300">You will need:</h3>
+                    <p class="text-3xl font-bold text-teal-300 mt-3"><span id="pigmentResult">0.50 L</span> Pigment (Lasur)</p>
+                    <p class="text-xl font-bold text-stone-400 mt-1">+ <span id="diluentResult">0.50 L</span> Fixativ</p>
+                    
+                    <div class="mt-4 pt-4 border-t border-stone-600">
+                        <p class="text-stone-400 text-sm">Approx. Desired Finish:</p>
+                        <p id="resultFinish" class="text-lg font-bold text-white">Semi-Transparent</p>
+                    </div>
                 </div>
 
-                <!-- 6. How to use calculator -->
-                <div class="mt-8 pt-6 border-t border-stone-200 space-y-6">
-                  <h3 class="text-2xl font-bold text-gray-800 text-center">How to Use The Calculator</h3>
-                  
-                  <!-- Example 1: Ratio -->
-                  <div class="p-4 bg-white rounded-lg border shadow-sm">
-                    <h4 class="text-lg font-semibold text-gray-900">Example 1: Mixing by Ratio</h4>
-                    <p class="text-gray-800 mt-2">
-                      <strong>Goal:</strong> Mix <strong>1 Litre (1000ml)</strong> with a transparent <strong>1 : 4 ratio</strong>.
-                    </p>
-                    <ol class="list-decimal list-outside ml-6 mt-3 space-y-1 text-gray-800">
-                      <li>In "Total Volume", type <code class="bg-stone-200 px-1.5 py-0.5 rounded">1000</code>.</li>
-                      <li>Select the "By Ratio" tab.</li>
-                      <li>Enter <code class="bg-stone-200 px-1.5 py-0.5 rounded">1</code> for Pigment and <code class="bg-stone-200 px-1.5 py-0.5 rounded">4</code> for Dilution.</li>
-                    </ol>
-                    <div class="mt-3 bg-stone-50 p-3 rounded">
-                      <p class="font-semibold text-gray-800">The calculator will show:</p>
-                      <ul class="list-disc ml-6 text-gray-800">
-                        <li>Pigment: <strong>200 ml</strong></li>
-                        <li>Dilution: <strong>800 ml</strong></li>
-                      </ul>
-                    </div>
-                  </div>
-          
-                  <!-- Example 2: Percentage -->
-                  <div class="p-4 bg-white rounded-lg border shadow-sm">
-                    <h4 class="text-lg font-semibold text-gray-900">Example 2: Mixing by Percentage</h4>
-                    <p class="text-gray-800 mt-2">
-                      <strong>Goal:</strong> Mix <strong>1 Litre (1000ml)</strong> with <strong>30% Pigment</strong> for a transparent finish.
-                    </p>
-                    <ol class="list-decimal list-outside ml-6 mt-3 space-y-1 text-gray-800">
-                      <li>In "Total Volume", type <code class="bg-stone-200 px-1.5 py-0.5 rounded">1000</code>.</li>
-                      <li>Select the "By Percentage" tab.</li>
-                      <li>Enter <code class="bg-stone-200 px-1.5 py-0.5 rounded">30</code> in the percentage box.</li>
-                    </ol>
-                    <div class="mt-3 bg-stone-50 p-3 rounded">
-                      <p class="font-semibold text-gray-800">The calculator will show:</p>
-                      <ul class="list-disc ml-6 text-gray-800">
-                        <li>Pigment: <strong>300 ml</strong></li>
-                        <li>Dilution: <strong>700 ml</strong></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-            </div>
+            </section>
 
             <!-- Section: How to Mix -->
-            <div class="mt-8">
+            <div class="mt-12">
                 <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2">How to Mix (Step-by-Step)</h2>
                 <ol class="list-decimal list-outside ml-6 mt-4 space-y-4 text-gray-700 text-lg">
                     <li class="pl-2">
@@ -176,7 +180,7 @@
                         <strong class="font-semibold text-gray-800">Stir the Pigment First:</strong> Thoroughly mix the <strong>Concretal-Lasur (Pigment)</strong> in its original can before pouring. The colour settles at the bottom!
                     </li>
                     <li class="pl-2">
-                        <strong class="font-semibold text-gray-800">Combine:</strong> Pour your measured amounts of Pigment and <strong>Dilution (Fixativ)</strong> into your bucket.
+                        <strong class="font-semibold text-gray-800">Combine:</strong> Pour your measured amounts of Pigment and <strong>Diluent (Fixativ)</strong> into your bucket.
                     </li>
                     <li class="pl-2">
                         <strong class="font-semibold text-gray-800">Mix Well:</strong> Mix thoroughly with your mechanical mixer for at least 2 minutes.
@@ -191,26 +195,95 @@
             <div class="mt-8">
                 <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2">Crucial Application Rules</h2>
                 <ul class="list-none mt-4 space-y-3">
+                    <!-- Rule 1: NO WATER -->
                     <li class="bg-red-50 border-l-4 border-red-500 text-red-900 p-5 rounded-r-lg shadow">
                         <strong class="font-bold text-lg">DO NOT DILUTE WITH WATER.</strong>
                         <p class="mt-1">This will ruin the chemical bond of the silicate paint. Only use <strong>Concretal-Fixativ</strong> to dilute.</p>
                     </li>
+                    <!-- Rule 2: Wet-on-Wet -->
                     <li class="bg-stone-100 border-l-4 border-stone-500 text-gray-800 p-5 rounded-r-lg">
                         <strong class="font-bold text-lg">Work "Wet-on-Wet".</strong>
                         <p class="mt-1">Always keep a "wet edge" as you paint. Do not stop in the middle of a wall, or you will see a line. Paint from one corner to another, or from one joint to another, without stopping.</p>
                     </li>
+                    <!-- Rule 3: Apply Thinly -->
                     <li class="bg-stone-100 border-l-4 border-stone-500 text-gray-800 p-5 rounded-r-lg">
                         <strong class="font-bold text-lg">Apply thinly.</strong>
                         <p class="mt-1">This is a stain, not a thick paint. Apply thin, even coats.</p>
                     </li>
+                    <!-- Rule 4: Not for floors -->
+                    <li class="bg-stone-100 border-l-4 border-stone-500 text-gray-800 p-5 rounded-r-lg">
+                        <strong class="font-bold text-lg">Not for Foot Traffic.</strong>
+                        <p class="mt-1">This product is suitable for walls, ceilings, and soffits. It is <strong>not</strong> recommended for floors or areas with foot traffic.</p>
+                    </li>
                 </ul>
+            </div>
+
+            <!-- Section: Example Mixing Tables -->
+            <div class="mt-8">
+                <h2 class="text-2xl font-semibold text-gray-800 border-b pb-2">Example Mixing Tables</h2>
+                <p class="mt-4 text-gray-700">These are just examples. Use the calculator above for your exact needs!</p>
+
+                <!-- Table 1: Ratio -->
+                <h3 class="text-xl font-semibold text-gray-800 mt-6">Mixing by Ratio (Parts)</h3>
+                <div class="overflow-x-auto mt-4 rounded-lg border shadow">
+                    <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                        <thead class="bg-stone-50">
+                            <tr>
+                                <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Ratio (Pigment:Diluent)</th>
+                                <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Approx. Desired Finish</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr><td class="px-4 py-3 font-medium"><strong>1 : 0</strong></td><td class="px-4 py-3"><strong>Opaque (Solid Colour)</strong></td></tr>
+                            <tr><td class="px-4 py-3 font-medium"><strong>4 : 1</strong></td><td class="px-4 py-3">Opaque / Semi-Opaque</td></tr>
+                            <tr><td class="px-4 py-3 font-medium"><strong>1 : 1</strong></td><td class="px-4 py-3"><strong>Semi-Transparent</strong></td></tr>
+                            <tr><td class="px-4 py-3 font-medium"><strong>1 : 4</strong></td><td class="px-4 py-3"><strong>Transparent</strong></td></tr>
+                            <tr><td class="px-4 py-3 font-medium"><strong>1 : 10</strong></td><td class="px-4 py-3"><strong>Very Transparent "Veil"</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-4 p-4 bg-stone-100 rounded-lg border">
+                    <p class="font-semibold text-gray-800">Simple Example (Ratio):</p>
+                    <p class="text-gray-700 mt-2">If you want a <strong>1 : 4</strong> mix (1 part Pigment, 4 parts Diluent) and need 1 Litre:</p>
+                    <ul class="list-disc ml-6 mt-1 text-gray-700">
+                        <li>You would mix: <strong>0.20 L of Pigment</strong> (Lasur) + <strong>0.80 L of Diluent</strong> (Fixativ).</li>
+                    </ul>
+                </div>
+
+                <!-- Table 2: Percentage -->
+                <h3 class="text-xl font-semibold text-gray-800 mt-8">Mixing by Percentage (Pigment)</h3>
+                <div class="overflow-x-auto mt-4 rounded-lg border shadow">
+                    <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                        <thead class="bg-stone-50">
+                            <tr>
+                                <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Pigment Percentage</th>
+                                <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Approx. Desired Finish</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr><td class="px-4 py-3 font-medium"><strong>100%</strong></td><td class="px-4 py-3"><strong>Opaque (Solid Colour)</strong></td></tr>
+                            <tr><td class="px-4 py-3 font-medium"><strong>80%</strong></td><td class="px-4 py-3">Opaque / Semi-Opaque</td></tr>
+                            <tr><td class="px-4 py-3 font-medium"><strong>50%</strong></td><td class="px-4 py-3"><strong>Semi-Transparent</strong></td></tr>
+                            <tr><td class="px-4 py-3 font-medium"><strong>20%</strong></td><td class="px-4 py-3"><strong>Transparent</strong></td></tr>
+                            <tr><td class="px-4 py-3 font-medium"><strong>10%</strong></td><td class="px-4 py-3"><strong>Very Transparent "Veil"</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-4 p-4 bg-stone-100 rounded-lg border">
+                    <p class="font-semibold text-gray-800">Simple Example (Percentage):</p>
+                    <p class="text-gray-700 mt-2">If you want a <strong>30% Pigment</strong> mix and need 1 Litre:</p>
+                    <ul class="list-disc ml-6 mt-1 text-gray-700">
+                        <li>You would mix: <strong>0.30 L of Pigment</strong> (Lasur) + <strong>0.70 L of Diluent</strong> (Fixativ).</li>
+                    </ul>
+                </div>
+
             </div>
 
             <!-- Section: More Info Link -->
             <div class="mt-12 border-t pt-6 text-center text-gray-600">
                 <p class="text-lg">Need more technical details?</p>
                 <p class="mt-2">This is a simplified guide. For full technical data sheets (TDS), safety info (SDS), and application details, always refer to the manufacturer's website.</p>
-                <a href="https://www.keim.com.au/concretal-lasur/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-teal-600 font-semibold hover:text-teal-700 hover:underline">
+                <a href="https://www.keim.com.au/concretal-lasur" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-teal-600 font-semibold hover:text-teal-700 hover:underline">
                     Visit the KEIM Australia Concretal-Lasur Page &rarr;
                 </a>
             </div>
@@ -218,111 +291,206 @@
         </div>
     </div>
 
-    <!-- JavaScript for the Calculator -->
+    <!-- 4. JavaScript for the Calculator -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get all the elements we need
-            const totalVolumeInput = document.getElementById('totalVolume');
-            
-            const tabRatio = document.getElementById('tabRatio');
-            const tabPercent = document.getElementById('tabPercent');
-            
-            const ratioSection = document.getElementById('ratioSection');
-            const percentSection = document.getElementById('percentSection');
-            
-            const ratioPigmentInput = document.getElementById('ratioPigment');
-            const ratioDilutionInput = document.getElementById('ratioDilution');
-            const percentPigmentInput = document.getElementById('percentPigment');
-            
-            const calculateBtn = document.getElementById('calculateBtn');
-            
-            const pigmentResult = document.getElementById('pigmentResult');
-            const dilutionResult = document.getElementById('dilutionResult');
+        // --- Mix Calculator Elements ---
+        const totalVolumeEl = document.getElementById('totalVolume');
+        const ratioPigmentEl = document.getElementById('ratioPigment');
+        const ratioDiluentEl = document.getElementById('ratioDiluent');
+        const percentPigmentEl = document.getElementById('percentPigment');
+        
+        const resultPigmentEl = document.getElementById('pigmentResult');
+        const resultDiluentEl = document.getElementById('diluentResult');
+        const resultFinishEl = document.getElementById('resultFinish');
+        
+        // Unit Dropdown Element
+        const unitSelect = document.getElementById('unitSelect');
+        const volumeHint = document.getElementById('volumeHint');
 
-            let activeCalculator = 'ratio'; // 'ratio' or 'percent'
+        const tabRatioBtn = document.getElementById('tabRatioBtn');
+        const tabPercentBtn = document.getElementById('tabPercentBtn');
+        const tabRatio = document.getElementById('tabRatio');
+        const tabPercent = document.getElementById('tabPercent');
 
-            // --- FUNCTIONS ---
+        // --- Coverage Calculator Elements ---
+        const areaInput = document.getElementById('areaInput');
+        const coverageResult = document.getElementById('coverageResult');
+        const transferBtn = document.getElementById('transferBtn');
 
-            // Function to handle tab switching
-            function switchTab(newMode) {
-                activeCalculator = newMode;
-                if (newMode === 'ratio') {
-                    // Show ratio section, hide percent section
-                    ratioSection.classList.remove('hidden');
-                    percentSection.classList.add('hidden');
-                    // Style tabs
-                    tabRatio.classList.add('bg-teal-600', 'text-white');
-                    tabRatio.classList.remove('bg-white', 'text-teal-600');
-                    tabPercent.classList.add('bg-white', 'text-teal-600');
-                    tabPercent.classList.remove('bg-teal-600', 'text-white');
-                } else { // percent mode
-                    // Hide ratio section, show percent section
-                    ratioSection.classList.add('hidden');
-                    percentSection.classList.remove('hidden');
-                    // Style tabs
-                    tabPercent.classList.add('bg-teal-600', 'text-white');
-                    tabPercent.classList.remove('bg-white', 'text-teal-600');
-                    tabRatio.classList.add('bg-white', 'text-teal-600');
-                    tabRatio.classList.remove('bg-teal-600', 'text-white');
-                }
+        let currentTab = 'ratio';
+        let currentUnit = 'L'; // Defaulting to Litres now
+
+        // --- Event Listeners: Coverage ---
+        areaInput.addEventListener('input', calculateCoverage);
+        
+        transferBtn.addEventListener('click', () => {
+            let calculatedVal = parseFloat(coverageResult.textContent) || 0;
+            
+            // If calculator is in ml mode, we need to convert the litres value from coverage calc
+            if (currentUnit === 'ml') {
+                 calculatedVal = calculatedVal * 1000;
+                 totalVolumeEl.value = Math.round(calculatedVal);
+            } else {
+                 totalVolumeEl.value = calculatedVal.toFixed(2);
             }
 
-            // Function to run the calculation
-            function calculateMix() {
-                const totalVolume = Math.max(0, parseFloat(totalVolumeInput.value) || 0);
-                let pigmentNeeded = 0;
-                let dilutionNeeded = 0;
-
-                if (activeCalculator === 'ratio') {
-                    const ratioPigment = Math.max(0, parseFloat(ratioPigmentInput.value) || 0);
-                    const ratioDilution = Math.max(0, parseFloat(ratioDilutionInput.value) || 0);
-                    const totalParts = ratioPigment + ratioDilution;
-
-                    if (totalParts > 0) {
-                        const volumePerPart = totalVolume / totalParts;
-                        pigmentNeeded = volumePerPart * ratioPigment;
-                        dilutionNeeded = volumePerPart * ratioDilution;
-                    }
-                } else if (activeCalculator === 'percent') {
-                    let percentPigment = parseFloat(percentPigmentInput.value) || 0;
-                    // Clamp percentage between 0 and 100
-                    percentPigment = Math.max(0, Math.min(100, percentPigment));
-
-                    pigmentNeeded = totalVolume * (percentPigment / 100);
-                    dilutionNeeded = totalVolume - pigmentNeeded;
-                }
-
-                // Display the results, rounded to the nearest whole number
-                pigmentResult.textContent = `Pigment (Colour): ${Math.round(pigmentNeeded)} ml`;
-                dilutionResult.textContent = `Dilution (Fixer): ${Math.round(dilutionNeeded)} ml`;
+            if(calculatedVal > 0) {
+                // Smooth scroll to mix calculator
+                document.getElementById('mix-calculator').scrollIntoView({ behavior: 'smooth' });
+                // Trigger mix calculation
+                calculateMix();
             }
-
-            // --- EVENT LISTENERS ---
-
-            // Listen for clicks on tab buttons
-            tabRatio.addEventListener('click', () => switchTab('ratio'));
-            tabPercent.addEventListener('click', () => switchTab('percent'));
-
-            // Listen for clicks on the calculate button
-            calculateBtn.addEventListener('click', calculateMix);
-
-            // Re-calculate automatically when any input value changes
-            [totalVolumeInput, ratioPigmentInput, ratioDilutionInput, percentPigmentInput].forEach(input => {
-                input.addEventListener('input', (e) => {
-                    // Prevent negative values in inputs
-                    if (e.target.value && parseFloat(e.target.value) < 0) {
-                        e.target.value = '0';
-                    }
-                });
-            });
-            
-            // --- INITIALIZATION ---
-
-            // Run the calculation once on load to populate the default values
-            calculateMix();
         });
+
+        function calculateCoverage() {
+            const area = parseFloat(areaInput.value) || 0;
+            // Rate: 0.25 Litres per sqm for 2 coats
+            const rate = 0.25; 
+            const totalLitres = area * rate;
+
+            coverageResult.textContent = totalLitres.toFixed(2); // Show 2 decimals for Litres
+        }
+
+        // --- Event Listeners: Mixing ---
+        totalVolumeEl.addEventListener('input', calculateMix);
+        ratioPigmentEl.addEventListener('input', calculateMix);
+        ratioDiluentEl.addEventListener('input', calculateMix);
+        percentPigmentEl.addEventListener('input', calculateMix);
+
+        // --- Event Listeners: Unit Dropdown ---
+        unitSelect.addEventListener('change', () => setUnit(unitSelect.value));
+
+        // --- Event Listeners: Tabs ---
+        tabRatioBtn.addEventListener('click', () => showTab('ratio'));
+        tabPercentBtn.addEventListener('click', () => showTab('percent'));
+
+
+        // --- Unit Switching ---
+        function setUnit(unit) {
+            const currentVal = parseFloat(totalVolumeEl.value) || 0;
+            
+            if (unit === 'L') {
+                // Convert to Litres
+                if (currentVal > 0 && currentUnit === 'ml') totalVolumeEl.value = (currentVal / 1000).toFixed(2);
+                volumeHint.textContent = "Example: 1.0 for 1 Litre";
+            } else {
+                // Convert to ml
+                if (currentVal > 0 && currentUnit === 'L') totalVolumeEl.value = Math.round(currentVal * 1000);
+                volumeHint.textContent = "Example: 1 Litre = 1000 ml";
+            }
+            currentUnit = unit;
+            calculateMix();
+        }
+
+
+        // --- Tab Switching ---
+        function showTab(tabName) {
+            currentTab = tabName;
+            if (tabName === 'ratio') {
+                tabRatio.classList.remove('hidden');
+                tabPercent.classList.add('hidden');
+                tabRatioBtn.classList.add('active');
+                tabRatioBtn.classList.remove('inactive');
+                tabPercentBtn.classList.add('inactive');
+                tabPercentBtn.classList.remove('active');
+            } else {
+                tabPercent.classList.remove('hidden');
+                tabRatio.classList.add('hidden');
+                tabPercentBtn.classList.add('active');
+                tabPercentBtn.classList.remove('inactive');
+                tabRatioBtn.classList.add('inactive');
+                tabRatioBtn.classList.remove('active');
+            }
+            calculateMix();
+        }
+
+        // --- Main Mixing Calculation ---
+        function calculateMix() {
+            if (currentTab === 'ratio') {
+                calculateByRatio();
+            } else {
+                calculateByPercent();
+            }
+        }
+
+        function calculateByRatio() {
+            const totalVol = parseFloat(totalVolumeEl.value) || 0;
+            const pRatio = parseFloat(ratioPigmentEl.value) || 0;
+            const dRatio = parseFloat(ratioDiluentEl.value) || 0;
+
+            if (totalVol === 0 || (pRatio === 0 && dRatio === 0)) {
+                updateResults(0, 0, 'N/A');
+                return;
+            }
+
+            const totalParts = pRatio + dRatio;
+            const pigmentVol = (pRatio / totalParts) * totalVol;
+            const diluentVol = (dRatio / totalParts) * totalVol;
+            
+            const pigmentPercent = (pigmentVol / totalVol) * 100;
+            
+            // Sync the other tab (approx)
+            if(totalParts > 0) percentPigmentEl.value = parseFloat(pigmentPercent.toFixed(1));
+
+            updateResults(pigmentVol, diluentVol, getFinishDescription(pigmentPercent));
+        }
+
+        function calculateByPercent() {
+            const totalVol = parseFloat(totalVolumeEl.value) || 0;
+            let pigmentPercent = parseFloat(percentPigmentEl.value) || 0;
+
+            // Clamp percentage
+            if (pigmentPercent > 100) { pigmentPercent = 100; percentPigmentEl.value = 100; }
+            if (pigmentPercent < 0) { pigmentPercent = 0; percentPigmentEl.value = 0; }
+
+            const pigmentVol = (pigmentPercent / 100) * totalVol;
+            const diluentVol = totalVol - pigmentVol;
+
+            // Sync the other tab (only simple values)
+            if (pigmentPercent === 100) {
+                ratioPigmentEl.value = 1;
+                ratioDiluentEl.value = 0;
+            } else if (pigmentPercent === 0) {
+                ratioPigmentEl.value = 0;
+                ratioDiluentEl.value = 1;
+            }
+
+            updateResults(pigmentVol, diluentVol, getFinishDescription(pigmentPercent));
+        }
+
+        // --- Helper Functions ---
+        function updateResults(pigmentVol, diluentVol, finish) {
+            if (currentUnit === 'L') {
+                resultPigmentEl.textContent = `${pigmentVol.toFixed(2)} L`;
+                resultDiluentEl.textContent = `${diluentVol.toFixed(2)} L`;
+            } else {
+                resultPigmentEl.textContent = `${Math.round(pigmentVol)} ml`;
+                resultDiluentEl.textContent = `${Math.round(diluentVol)} ml`;
+            }
+            resultFinishEl.textContent = finish;
+        }
+
+        function getFinishDescription(percentage) {
+            if (percentage >= 99) return 'Opaque (Solid Colour)';
+            if (percentage > 85) return 'Opaque';
+            if (percentage > 70) return 'Semi-Opaque';
+            if (percentage > 60) return 'Semi-Opaque / Semi-Transparent';
+            if (percentage > 40) return 'Semi-Transparent';
+            if (percentage > 20) return 'Transparent';
+            if (percentage > 5) return 'Very Transparent';
+            if (percentage > 0) return 'Very Transparent "Veil"';
+            return 'Diluent Only (No Colour)';
+        }
+
+        // Trigger calculations once on load
+        calculateCoverage();
+        calculateMix();
+
+        // Attach click handler for calculate button explicitly if needed, 
+        // but inputs already trigger it. The button is there for UX.
+        document.getElementById('calculateBtn').addEventListener('click', calculateMix);
+
     </script>
 
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
